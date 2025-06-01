@@ -12,8 +12,8 @@ type ResultsState = {
   icon: string
 }
 
-  const [loading, setLoading] = useState<boolean>(false)
 const App = () => {
+  const [loading, setLoading] = useState<boolean>(false)
   const [city, setCity] = useState<string>("")
   const [results, setResults] = useState<ResultsState>({
     country: "",
