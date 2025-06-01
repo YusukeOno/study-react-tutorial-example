@@ -1,8 +1,11 @@
+import Form from './components/Form';
+import Title from './components/Title';
+
 const App = () => {
   return (
     <div>
-      <h1 className="test">Hello World</h1>
-      <h3>Good Bye</h3>
+      <Title />
+      <Form />
     </div>
   );
 };
