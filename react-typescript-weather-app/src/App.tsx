@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Form from './components/Form';
 import Results from './components/Results';
 import Title from './components/Title';
+import Loading from './components/Loading';
 
 type ResultsState = {
   country: string
@@ -11,6 +12,7 @@ type ResultsState = {
   icon: string
 }
 
+  const [loading, setLoading] = useState<boolean>(false)
 const App = () => {
   const [city, setCity] = useState<string>("")
   const [results, setResults] = useState<ResultsState>({
@@ -33,6 +35,7 @@ const App = () => {
           conditionText: data.current.condition.text,
           icon: data.current.condition.icon
         })
+        setLoading(false)
         setCity("")
       })
       .catch(() => alert("エラーが発生しました。ページをリロードして、もう一度入力してください"))
@@ -45,8 +48,9 @@ const App = () => {
         <Form
           setCity={setCity}
           getWeather={getWeather}
-          city={city} />
-        <Results results={results} />
+          city={city}
+        />
+        {loading ? <Loading /> : <Results results={results} />}
       </div>
     </div>
   );
